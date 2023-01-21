@@ -2,7 +2,7 @@ from time import sleep
 from pymodbus.client import ModbusSerialClient
 
 
-port = 'COM14'
+port = '/dev/ttyUSB0'
 baudrate = 38400
 bytesize = 8
 parity = 'O'
