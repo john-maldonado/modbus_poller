@@ -1,0 +1,106 @@
+[
+    {
+        "device_type": "modbus/rtu",
+        "name": "click_plc",
+        "comm_config": {
+            "port": "/dev/ttyUSB0",
+            "baudrate": 38400,
+            "bytesize": 8,
+            "parity": "O",
+            "stopbits": 1,
+            "unit_id": 2
+        },
+        "tags": [
+            {
+                "name": "red_button",
+                "data_type": 11,
+                "address_type": "modbus/discrete_input",
+                "address": {
+                    "start" : 0,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "green_button",
+                "data_type": 11,
+                "address_type": "modbus/discrete_input",
+                "address": {
+                    "start" : 1,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "blue_button",
+                "data_type": 11,
+                "address_type": "modbus/discrete_input",
+                "address": {
+                    "start" : 2,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "red_lamp",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 8192,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "green_lamp",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 8193,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "blue_lamp",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 8194,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "green_start",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 16384,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "blue_start",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 16385,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "green_stop",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 16394,
+                    "length" : 1
+                }
+            },
+            {
+                "name": "blue_stop",
+                "data_type": 11,
+                "address_type": "modbus/coil",
+                "address": {
+                    "start" : 16395,
+                    "length" : 1
+                }
+            }
+        ]
+    }
+]
