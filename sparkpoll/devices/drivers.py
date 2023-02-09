@@ -18,7 +18,7 @@ class PollerDriver():
         self.comm_config = comm_config
 
     def connect(self):
-        if self.device_type == 'modbus/tcp':
+        if self.device_type == 'modbus/rtu':
             port = self.comm_config['port']
             baudrate = self.comm_config['baudrate']
             bytesize = self.comm_config['bytesize']
