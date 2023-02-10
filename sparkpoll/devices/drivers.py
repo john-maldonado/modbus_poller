@@ -6,7 +6,7 @@ from sparkpoll.devices import PollerDevice
 
 class PollerDriver():
     def __init__(self, device_type: str, comm_config : dict) -> None:
-
+        print('Initializing PollerDriver')
         self.device_type = device_type
         if device_type == 'modbus/rtu':
             pass
@@ -16,22 +16,29 @@ class PollerDriver():
             raise ValueError(
                 'No driver found for device type "{}"'.format(device_type))
         self.comm_config = comm_config
+        print(f'PollerDriver : {self}')
 
     def connect(self):
+        print('PollerDriver Connecting')
+        print(f'PollerDriver : {self}')
         if self.device_type == 'modbus/rtu':
+            print(f'device_type : {self.device_type}')
+            print(f'comm_config : {self.comm_config}')
             port = self.comm_config['port']
             baudrate = self.comm_config['baudrate']
             bytesize = self.comm_config['bytesize']
             parity = self.comm_config['parity']
             stopbits = self.comm_config['stopbits']
-
+            
+            print('Creating ModbusSerialCLient')
             self.client = ModbusSerialClient(
                 port=port,
                 baudrate=baudrate,
                 bytesize=bytesize,
                 parity=parity,
                 stopbits=stopbits)
-
+            print(f'ModbusSerialClient : {self.client}')
+            print('Connecting ModbusSerialClient')
             self.client.connect()
 
         else:

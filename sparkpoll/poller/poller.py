@@ -4,20 +4,25 @@ from sparkpoll.devices import PollerDriver
 
 class PollerProcess():
     def __init__(self, devices: list[PollerDevice], queue: Queue) -> None:
+        print('Initializing PollerProcess')
         self.devices = devices
         self.queue = queue
         self.device_type = self.devices[0].device_type
         comm_config = self.devices[0].comm_config
         self.driver = PollerDriver(device_type=self.device_type, comm_config=comm_config)
+        print('PollerProcess : {}'.format(self))
         pass
 
     def start(self) -> None:
-        print('Process Starting')
+        print('PollerProcess Starting')
+        print('PollerProcess : {}'.format(self))
         print(self.devices)
         print(self.queue)
         try:
             self.driver.connect()
             self.process = Process(target=self.driver.scan, args=(self.devices))
+            print('PollerProcess Started')
+            print('Process : {}'.format(self.process))
         except Exception as e:
             print(e)
         pass
@@ -29,6 +34,7 @@ class PollerProcess():
 class Poller():
 
     def __init__(self, devices: list[PollerDevice]) -> None:
+        print('Initializing Poller')
         self.devices = devices
         self.generate_processes()
         pass
@@ -58,6 +64,7 @@ class Poller():
         return device_type_group
     
     def generate_processes(self):
+        print('Generating Processes')
         device_type_groups = self.get_device_type_groups()
         processes = []
         for device_type, devices in device_type_groups.items():
@@ -76,9 +83,12 @@ class Poller():
             else:
                 raise ValueError('Unhandled device_type {}'.format(device_type))
         self.processes = processes
+        print('Processes')
+        print(self.processes)
         pass
 
     def start(self):
+        print('Starting Processes')
         for process in self.processes:
             process.start()
         

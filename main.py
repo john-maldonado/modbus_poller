@@ -9,6 +9,8 @@ print(myDevice.tags)
 
 myPoller = sparkpoll.Poller([myDevice])
 
+myPoller.generate_processes()
+
 print(myPoller)
 print(myPoller.devices)
 print(myPoller.get_device_types())
