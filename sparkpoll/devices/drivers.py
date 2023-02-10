@@ -29,7 +29,7 @@ class PollerDriver():
             bytesize = self.comm_config['bytesize']
             parity = self.comm_config['parity']
             stopbits = self.comm_config['stopbits']
-            
+
             print('Creating ModbusSerialCLient')
             self.client = ModbusSerialClient(
                 port=port,
@@ -40,6 +40,7 @@ class PollerDriver():
             print(f'ModbusSerialClient : {self.client}')
             print('Connecting ModbusSerialClient')
             self.client.connect()
+            print(f'ModusSerialClient Connection Status : {self.client.connected}')
 
         else:
             raise ValueError(
